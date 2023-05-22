@@ -1,0 +1,6 @@
+/.env
+/.idea
+/vendor
+.DS_Store
+/web/cpresources
+/storage
