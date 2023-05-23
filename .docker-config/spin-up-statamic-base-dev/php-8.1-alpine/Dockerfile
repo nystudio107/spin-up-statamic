@@ -25,6 +25,8 @@ RUN set -eux; \
     && \
     # Packages to install
     apk add --no-cache \
+        nodejs \
+        npm \
         su-exec \
         nano \
     && \
