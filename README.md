@@ -81,8 +81,6 @@ This project uses `make` to execute various commands in the appropriate containe
 * `make artisan xxx` - Execute a `php artisan` CLI command in the PHP container
 * `make ssh` - Open up a shell in the PHP container
 * `make db-admin-reset` - Reset the admin (user with the `ID=1`) to the defaults in from the `.env` file; useful after importing a foreign database
-* `make db-export` - Clean the `db-seed/` directory and export the database to it
-* `make db-import` - Import the db from `db-seed/` directory into the mysql container
 
 If the project is already running via `make dev` you can use a second terminal tab/window to execute additional commands.
 

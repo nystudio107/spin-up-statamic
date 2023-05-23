@@ -27,13 +27,10 @@ RUN set -eux; \
     apk add --no-cache \
         su-exec \
         nano \
-        mysql-client \
-        mariadb-connector-c \
     && \
     # Install PHP extensions
     docker-php-ext-install \
         pdo_mysql \
-        soap \
     && \
     # Install Composer
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer \
