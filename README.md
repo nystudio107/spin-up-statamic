@@ -80,7 +80,6 @@ This project uses `make` to execute various commands in the appropriate containe
 * `make statamic xxx` - Execute a `statamic` CLI command in the PHP container
 * `make artisan xxx` - Execute a `php artisan` CLI command in the PHP container
 * `make ssh` - Open up a shell in the PHP container
-* `make db-admin-reset` - Reset the admin (user with the `ID=1`) to the defaults in from the `.env` file; useful after importing a foreign database
 
 If the project is already running via `make dev` you can use a second terminal tab/window to execute additional commands.
 

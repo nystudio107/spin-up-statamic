@@ -25,3 +25,4 @@ chown -R www-data:www-data /var/www/project/public
 source '/var/www/banner_message.sh'
 # Run a queue listener
 su-exec www-data php artisan:work
+exit 0

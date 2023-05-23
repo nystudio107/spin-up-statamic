@@ -12,10 +12,11 @@
 
 # Ensure permissions on directories Statamic needs to write to
 chown -R www-data:www-data /var/www/project/storage
-chown -R www-data:www-data /var/www/project/web/cpresources
+chown -R www-data:www-data /var/www/project/public
 # Check for `composer.lock` & `vendor/`
 cd /var/www/project
 if [ ! -f "composer.lock" ] || [ ! -d "vendor" ] || [ ! -f "vendor/autoload.php" ]; then
     chown -R www-data:www-data /var/www/project
-    su-exec www-data statamic new ./
+#    su-exec www-data composer install --verbose --no-progress --no-scripts --no-interaction
 fi
+exit 0
