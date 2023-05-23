@@ -25,8 +25,6 @@ services:
     build: &php-build
       context: ./.docker-config/php
       dockerfile: ./Dockerfile
-    depends_on:
-      - "mysql"
     env_file:
       *env_file
     environment:
@@ -43,31 +41,11 @@ services:
       - storage:/var/www/project/storage:delegated
       # Specific directories that need to be bind mounted inside the volumes
       - ./storage/logs:/var/www/project/storage/logs:delegated
-  # mysql - database
-  mysql:
-    build:
-      context: ./.docker-config/mysql
-      dockerfile: ./Dockerfile
-    cap_add:
-      - SYS_NICE  # CAP_SYS_NICE
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: project
-      MYSQL_USER: project
-      MYSQL_PASSWORD: project
-    init: true
-    expose:
-      - "3306"
-    volumes:
-      - db-data:/var/lib/mysql
-      - ./db-seed:/docker-entrypoint-initdb.d
   # queue - runs queue jobs via php artisan:work
   queue:
     build:
       *php-build
     command: /var/www/run_queue.sh
-    depends_on:
-      - "mysql"
     env_file:
       *env_file
     environment:
@@ -78,6 +56,4 @@ services:
     volumes:
       *php-volumes
 volumes:
-  db-data:
-  cpresources:
   storage:
