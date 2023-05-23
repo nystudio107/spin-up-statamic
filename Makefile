@@ -26,6 +26,10 @@ composer: up
 		$(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
 # Start the dev server
 dev: up
+# Execute an npm command in the PHP container
+npm: up
+	docker compose exec -it php su-exec www-data npm \
+		$(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
 # Remove the Docker volumes & start clean
 nuke: clean
 	cp -n example.env .env; \
