@@ -38,9 +38,9 @@ services:
       # Bind mount the entire project directory
       - ./:/var/www/project:cached
       # Directories we want to persist as volumes
-      - storage:/var/www/project/storage:delegated
+      #- storage:/var/www/project/storage:delegated
       # Specific directories that need to be bind mounted inside the volumes
-      - ./storage/logs:/var/www/project/storage/logs:delegated
+      #- ./storage/logs:/var/www/project/storage/logs:delegated
   # queue - runs queue jobs via php artisan:work
   queue:
     build:
