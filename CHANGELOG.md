@@ -1,6 +1,6 @@
 # nystudio107/spin-up-statamic Change Log
 
-## 1.0.0 - UNRELEASED
+## 1.0.0 - 2023.05.24
 ### Added
 * Initial release
 
