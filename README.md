@@ -1,12 +1,12 @@
 # Spin Up Statamic
 
-Allows you to create your own self-contained Statamic project complete with a seeded database, template files, assets, and devops shrink-wrapped with Docker, which you can distribute to others or use yourself.
+Allows you to create your own self-contained Statamic project complete site config, Antlers/Blade/Twig template files, assets, and devops shrink-wrapped with Docker, which you can distribute to others or use yourself.
 
 Use it for:
 - Spinning up a Statamic site in a browser in Github Codespaces
 - Shipping a self-contained Statamic site to others
 - Providing working example code & projects to others
-- Spinning up a local Statamic project using someone else's `composer.json` & database, for support
+- Spinning up a local Statamic project using someone else's `composer.json` for support
 
 **N.B.:** This is _not_ intended to be a fully functional local development environment for client sites (there is no `buildchain`, for example).
 
@@ -16,7 +16,7 @@ This is a template repository. Click on **Use this template** on [github](https:
 
 You will then be able to name the new repository, and a clone of this repo will be created there.
 
-The project you'll get is the default Statamic starter you might create with `statamic new ./`, with the Spin Up Statamic scaffolding around it.
+The project you'll get is the default Statamic starter you might create with `statamic new`, with the Spin Up Statamic scaffolding around it.
 
 If you intend to use this as a [Template Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) (like Spin Up Statamic is), you'll want to go to the repo **Settings** and check the **Template repository** checkbox.
 
@@ -32,14 +32,14 @@ You can also consider [adding an **Open in Codespaces**](https://docs.github.com
 ```
 queue_1    | ### Your Statamic site is ready!
 queue_1    | Frontend URL: https://khalwat-opulent-xylophone-q59g6p5vqj3rvr-8050.preview.app.github.dev/
-queue_1    | CP URL: https://khalwat-opulent-xylophone-q59g6p5vqj3rvr-8050.preview.app.github.dev/admin
-queue_1    | CP User: admin
-queue_1    | CP Password: project
+queue_1    | CP URL: https://khalwat-opulent-xylophone-q59g6p5vqj3rvr-8050.preview.app.github.dev/cp
+queue_1    | CP User: demo@statamic.com
+queue_1    | CP Password: password
 ```
 
 This lets anyone use the project without having to do _any_ local setup.
 
-You can use the Codespaces editor to edit Twig files, load the site frontend, or log into the Statamic CP, all from within a browser!
+You can use the Codespaces editor to edit template files, load the site frontend, or log into the Statamic CP, all from within a browser!
 
 The first time you start up your project in Codespaces, it'll take some time to set everything up. However, subsequent startups will be very quick.
 
@@ -49,7 +49,7 @@ https://github.com/codespaces
 
 Click on one to resume it. If you don't see a Terminal window, go to the hamburger  menu in the top-left, and click on **Terminal > New Terminal**
 
-You are limited to 15 active Codespaces on the free plan, but you can go in and delete any older Codespaces you're not using at any time.
+You are limited to 5 active Codespaces on the free plan, but you can go in and delete any older Codespaces you're not using at any time.
 
 ## Using your Statamic CMS project in local dev
 
@@ -62,9 +62,9 @@ You are limited to 15 active Codespaces on the free plan, but you can go in and 
 ```
 spin-up-statamic-queue-1  | ### Your Statamic site is ready!
 spin-up-statamic-queue-1  | Frontend URL: http://localhost:8050/
-spin-up-statamic-queue-1  | CP URL: http://localhost:8050/admin
-spin-up-statamic-queue-1  | CP User: admin
-spin-up-statamic-queue-1  | CP Password: project
+spin-up-statamic-queue-1  | CP URL: http://localhost:8050/cp
+spin-up-statamic-queue-1  | CP User: demo@statamic.com
+spin-up-statamic-queue-1  | CP Password: password
 ```
 
 Hit `Control-C` to terminate the project and spin down the containers
@@ -76,9 +76,10 @@ The first time you start up your project, it'll take some time to set everything
 This project uses `make` to execute various commands in the appropriate containers. Here's a list of available commands:
 
 * `make dev` - Start the dev server
-* `make composer xxx` - Execute a composer command in the PHP container
-* `make statamic xxx` - Execute a `statamic` CLI command in the PHP container
 * `make artisan xxx` - Execute a `php artisan` CLI command in the PHP container
+* `make composer xxx` - Execute a `composer` command in the PHP container
+* `make npm xxx` - Execute an `npm` command in the PHP container
+* `make statamic xxx` - Execute a `statamic` CLI command in the PHP container
 * `make ssh` - Open up a shell in the PHP container
 
 If the project is already running via `make dev` you can use a second terminal tab/window to execute additional commands.
@@ -89,12 +90,6 @@ Develop the site as you normally would by editing templates, adding content, add
 
 Commit your changes to the repository.
 
-To update the database dump in `db-seed/` directory, use the command:
-```
-make db-export
-```
-... and then commit the new database dump to your repository. Ensure there is no confidential data in the database dump before doing so.
-
 People wanting to use the project will simply need to `git clone` the repo down, and get up and running with `make dev`
 
 ## Using Spin Up Statamic for support
@@ -103,27 +98,14 @@ If you're using Spin Up Statamic to try to replicate an issue someone else is ha
 
 1. Clone a clean version of your repo down
 2. Copy their `composer.json` and their `composer.lock` files to overwrite the project's respective files
-3. Delete the repo's database dump from `db-seed/` and copy their database dump into it as an uncompressed `.sql` file
+3. Copy over any database files they have provided
 
 Then start the project up with:
 ```
 make dev
 ```
 
-If you need to re-import their db at any time, you can use:
-```
-make db-import
-```
-
-If you don't have a login, or the client doesn't wish to share their password, you can then use:
-```
-make db-admin-reset
-```
-
-...which will reset the admin user (`ID=1`) to the defaults specified in the `.env` file
-
-Usually the `composer.json`, `composer.lock`, and database dump are all you need to replicate issues. But if additional config/template files are needed, obtain them as well.
-
+Usually the `composer.json`, `composer.lock`, and database files are all you need to replicate issues. But if additional config/template files are needed, obtain them as well.
 
 ## Random notes
 
@@ -134,6 +116,6 @@ Usually the `composer.json`, `composer.lock`, and database dump are all you need
 
 ## To Do
 
-- Await orders from Ben & Ryan
+- Await orders from Jack
 
 Brought to you by [nystudio107](https://nystudio107.com/)
