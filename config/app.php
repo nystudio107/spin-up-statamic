@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 // Rewrite the APP_URL env var if we're running in Codespaces
+$appUrl = env('APP_URL', 'http://localhost');
 if (env('CODESPACES')) {
     // putenv() only affects the OS's environment, so set it directly
-    $_ENV['APP_URL'] = $_SERVER['APP_URL'] = sprintf(
+    $appUrl = $_ENV['APP_URL'] = $_SERVER['APP_URL'] = sprintf(
         "https://%s-%s.%s/",
         env('CODESPACE_NAME'),
         env('DEV_SERVER_PORT'),
@@ -66,7 +67,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => $appUrl,
 
     'asset_url' => env('ASSET_URL'),
 
