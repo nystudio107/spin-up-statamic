@@ -13,6 +13,7 @@ if (env('CODESPACES')) {
         env('DEV_SERVER_PORT'),
         env('GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN')
     );
+    \putenv("APP_URL=$appUrl");
 }
 
 return [
