@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 // Rewrite the APP_URL env var if we're running in Codespaces
+
 $appUrl = env('APP_URL', 'http://localhost');
 if (env('CODESPACES')) {
     // putenv() only affects the OS's environment, so set it directly
@@ -69,7 +70,7 @@ return [
 
     'url' => $appUrl,
 
-    'asset_url' => env('ASSET_URL'),
+    'asset_url' => $appUrl,
 
     /*
     |--------------------------------------------------------------------------
