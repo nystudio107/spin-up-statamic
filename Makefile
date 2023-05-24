@@ -46,6 +46,10 @@ nuke: clean
 		echo "### Using port: $$DEV_SERVER_PORT"; \
 	fi; \
 	docker compose up --build --force-recreate
+# Execute a please command in the PHP container
+please: up
+	docker compose exec -it php su-exec www-data php please \
+		$(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
 # Open up a shell in the PHP container
 ssh:
 	docker compose exec -it php su-exec www-data /bin/sh
