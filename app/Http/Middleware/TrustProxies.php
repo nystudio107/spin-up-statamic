@@ -12,7 +12,8 @@ class TrustProxies extends Middleware
      *
      * @var array<int, string>|string|null
      */
-    protected $proxies;
+    // Set this to '*' to allow the proxies that Github Codespaces uses
+    protected $proxies = '*';
 
     /**
      * The headers that should be used to detect proxies.
