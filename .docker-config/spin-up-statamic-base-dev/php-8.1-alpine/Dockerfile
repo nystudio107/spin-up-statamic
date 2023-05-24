@@ -25,15 +25,14 @@ RUN set -eux; \
     && \
     # Packages to install
     apk add --no-cache \
+        nodejs \
+        npm \
         su-exec \
         nano \
-        mysql-client \
-        mariadb-connector-c \
     && \
     # Install PHP extensions
     docker-php-ext-install \
         pdo_mysql \
-        soap \
     && \
     # Install Composer
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer \

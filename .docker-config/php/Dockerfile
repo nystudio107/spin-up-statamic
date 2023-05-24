@@ -7,9 +7,7 @@ RUN chmod a+x run_queue.sh \
     && \
     mkdir -p /var/www/project/storage \
     && \
-    mkdir -p /var/www/project/web/cpresources \
-    && \
-    chown -R www-data:www-data /var/www/project
+    chown -R www-data:www-data /var/www/project &> /dev/null || true
 COPY ./composer_install.sh .
 RUN chmod a+x composer_install.sh
 COPY ./banner_message.sh .

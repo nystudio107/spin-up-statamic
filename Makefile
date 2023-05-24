@@ -24,22 +24,12 @@ clean:
 composer: up
 	docker compose exec -it php su-exec www-data composer \
 		$(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
-# Reset the admin password, user name, and email address
-db-admin-reset: up
-	docker compose exec -it php su-exec www-data mysql \
-		-h mysql -u "${CRAFT_DB_USER}" -p"${CRAFT_DB_PASSWORD}" "${CRAFT_DB_DATABASE}" \
-		-e 'UPDATE users SET username=${CRAFT_CP_USER}, email=${CRAFT_CP_EMAIL}, password=${CRAFT_HASHED_PASSWORD} WHERE id=1;'
-# Clean the `db-seed` directory and export the database to it
-db-export: up
-	rm -rf db-seed/*
-	docker compose exec -it php su-exec www-data php craft \
-		db/backup /var/www/project/db-seed
-# Import the db from db-seed/ into the mysql container
-db-import: up
-	docker compose exec -it php su-exec www-data /bin/sh \
-		-c 'cat /var/www/project/db-seed/*.sql | mysql -h mysql -u "${CRAFT_DB_USER}" -p"${CRAFT_DB_PASSWORD}" "${CRAFT_DB_DATABASE}"'
 # Start the dev server
 dev: up
+# Execute an npm command in the PHP container
+npm: up
+	docker compose exec -it php su-exec www-data npm \
+		$(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
 # Remove the Docker volumes & start clean
 nuke: clean
 	cp -n example.env .env; \
