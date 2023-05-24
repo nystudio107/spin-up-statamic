@@ -7,16 +7,11 @@ use Illuminate\Support\ServiceProvider;
 $appUrl = env('APP_URL', 'http://localhost');
 if (env('CODESPACES')) {
     // putenv() only affects the OS's environment, so set it directly
-    $httpHost = $_ENV['HTTP_HOST'] = $_SERVER['HTTP_HOST'] = sprintf(
-        "%s-%s.%s",
+    $appUrl = $_ENV['APP_URL'] = $_SERVER['APP_URL'] = sprintf(
+        "https://%s-%s.%s/",
         env('CODESPACE_NAME'),
         env('DEV_SERVER_PORT'),
         env('GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN')
-    );
-    \putenv("HTTP_HOST=$httpHost");
-    $appUrl = $_ENV['APP_URL'] = $_SERVER['APP_URL'] = sprintf(
-        "https://%s/",
-        $httpHost
     );
     \putenv("APP_URL=$appUrl");
 }
