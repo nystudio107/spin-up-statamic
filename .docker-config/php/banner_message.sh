@@ -18,5 +18,5 @@ sleep 1
 echo "### Your Statamic site is ready!"
 echo "Frontend URL: ${APP_URL}"
 echo "CP URL: ${APP_URL}cp"
-echo "CP User: ${CRAFT_CP_USER}"
-echo "CP Password: ${CRAFT_CP_PASSWORD}"
+echo "CP User: ${STATAMIC_CP_USER}"
+echo "CP Password: ${STATAMIC_CP_PASSWORD}"
