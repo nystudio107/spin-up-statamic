@@ -3,7 +3,7 @@
 Allows you to create your own self-contained Statamic project complete site config, Antlers/Blade/Twig template files, assets, and devops shrink-wrapped with Docker, which you can distribute to others or use yourself.
 
 Use it for:
-- Spinning up a Statamic site in a browser in Github Codespaces
+- Spinning up a Statamic site in a browser in GitHub Codespaces
 - Shipping a self-contained Statamic site to others
 - Providing working example code & projects to others
 - Spinning up a local Statamic project using someone else's `composer.json` for support
@@ -12,7 +12,7 @@ Use it for:
 
 ## Making a new Statamic project
 
-This is a template repository. Click on **Use this template** on [github](https://github.com/nystudio107/spin-up-statamic) and select **Create a new repository**.
+This is a template repository. Click on **Use this template** on [GitHub](https://github.com/nystudio107/spin-up-statamic) and select **Create a new repository**.
 
 You will then be able to name the new repository, and a clone of this repo will be created there.
 
@@ -22,9 +22,9 @@ If you intend to use this as a [Template Repository](https://docs.github.com/en/
 
 You can also consider [adding an **Open in Codespaces**](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/setting-up-your-repository/adding-a-codespaces-badge) button.
 
-## Using your Statamic project in a browser via Github Codespaces
+## Using your Statamic project in a browser via GitHub Codespaces
 
-1. Go to your repo in Github
+1. Go to your repo in GitHub
 2. Click on **Use this template** and select **Open in a codespace** if your repository is a Template Repository. If it is a regular repository, click on **Code**, then click on the **Codespaces** tab, and click on the **Creat codespace on ...** button
 3. In the resulting Terminal window, type `make dev` to start the project up
 4. Wait until you see output like this, and then access the site via the credentials that are output on the console:
