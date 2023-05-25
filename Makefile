@@ -10,9 +10,9 @@ export CODESPACES
 export CODESPACE_NAME
 export GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN
 
-.PHONY: artisan clean composer db-admin-reset db-export db-import dev nuke ssh statamic up
+.PHONY: artisan clean composer dev npm nuke ssh statamic up
 
-# Execute a artisan command in the PHP container
+# Execute an artisan command in the PHP container
 artisan: up
 	docker compose exec -it php su-exec www-data php artisan \
 		$(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
@@ -46,6 +46,10 @@ nuke: clean
 		echo "### Using port: $$DEV_SERVER_PORT"; \
 	fi; \
 	docker compose up --build --force-recreate
+# Execute a please command in the PHP container
+please: up
+	docker compose exec -it php su-exec www-data php please \
+		$(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
 # Open up a shell in the PHP container
 ssh:
 	docker compose exec -it php su-exec www-data /bin/sh
