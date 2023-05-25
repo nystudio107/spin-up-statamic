@@ -1,0 +1,8 @@
+export_paths:
+  - .docker-config/nginx
+  - .docker-config/php
+  - app/Http/Middleware/TrustProxies.php
+  - config/app.php
+  - example.env
+  - docker-compose.yml
+  - Makefile
