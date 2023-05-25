@@ -84,6 +84,10 @@ This project uses `make` to execute various commands in the appropriate containe
 
 If the project is already running via `make dev` you can use a second terminal tab/window to execute additional commands.
 
+## Adding to an existing Statamic project
+
+You can use the [Start Up Statatmic starter kit](https://github.com/nystudio107/spin-up-statamic-starter) to add the Spin Up Scaffolding to your existing Statamic project.
+
 ## Creating your Statamic project
 
 Develop the site as you normally would by editing templates, adding content, adding assets, etc.
