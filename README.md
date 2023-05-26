@@ -79,6 +79,7 @@ This project uses `make` to execute various commands in the appropriate containe
 * `make artisan xxx` - Execute a `php artisan` CLI command in the PHP container
 * `make composer xxx` - Execute a `composer` command in the PHP container
 * `make npm xxx` - Execute an `npm` command in the PHP container
+* `make please xxx` - Execute a `please` command in the PHP container
 * `make statamic xxx` - Execute a `statamic` CLI command in the PHP container
 * `make ssh` - Open up a shell in the PHP container
 
